@@ -1,0 +1,273 @@
+﻿@model IEnumerable<wn_web.Models.Reclaimation.Report.SiteVisitReport>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FacilityType.FacilityTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewSiteID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Group)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RefusePF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RefuseComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DrainagePF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DrainageComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RockGravelPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RockGravelComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BareGroundPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BareGroundComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoilStabilityPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoilStabilityComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContoursPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContoursComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CWDPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CWDComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ErosionPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ErosionComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoilCharPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoilCharComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TopsoilDepthPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TopsoilDepthComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RootingPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RootingComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WSDPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WSDComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeHealthPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreeHealthComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeedsInvasivesPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeedsInvasivesComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NSCPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NSCComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LitterPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LitterComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Recommendation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FacilityType.FacilityTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewSiteID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RefusePF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RefuseComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrainagePF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrainageComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RockGravelPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RockGravelComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BareGroundPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BareGroundComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoilStabilityPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoilStabilityComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContoursPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContoursComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CWDPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CWDComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ErosionPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ErosionComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoilCharPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoilCharComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopsoilDepthPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopsoilDepthComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RootingPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RootingComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WSDPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WSDComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TreeHealthPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TreeHealthComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeedsInvasivesPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeedsInvasivesComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NSCPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NSCComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LitterPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LitterComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recommendation)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SiteVisitReportID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SiteVisitReportID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SiteVisitReportID })
+        </td>
+    </tr>
+}
+
+</table>

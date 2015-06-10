@@ -1,0 +1,336 @@
+﻿@model wn_web.Models.Reclaimation.DesktopReview
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DesktopReview</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FacilityType.FacilityTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacilityType.FacilityTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Landscape.LandscapeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Landscape.LandscapeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LSDQuarter.AspectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LSDQuarter.AspectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RelevantCriteria.RelevantCriteriaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RelevantCriteria.RelevantCriteriaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Site.DataOwner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Site.DataOwner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soil.SoilName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soil.SoilName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vegetation.VegetationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vegetation.VegetationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovalStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkPhase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkPhase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Occupant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Occupant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OccupantInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OccupantInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoilClass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoilClass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoilGroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoilGroup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ERCBLic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ERCBLic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Width)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Width)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Northing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Northing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Easting)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Easting)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Elevation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Elevation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LSD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LSD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SurveyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SurveyDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConstructionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConstructionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpudDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpudDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AbandonmentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AbandonmentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReclamationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReclamationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RCADate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RCADate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RCNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RCNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DSAComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DSAComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Exemptions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Exemptions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmendDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmendDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmendDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmendDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RevegDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RevegDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RevegDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RevegDetail)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

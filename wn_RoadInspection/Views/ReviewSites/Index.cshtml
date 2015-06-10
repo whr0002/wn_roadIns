@@ -1,0 +1,111 @@
+﻿@model IEnumerable<wn_web.Models.Reclaimation.ReviewSite>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewSiteID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.County.CountyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FMAHolder.FMAHolderName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NaturalRegion.NaturalRegionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NaturalSubRegion.NaturalSubRegionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperatingArea.OperatingAreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProvincialArea.ProvincialAreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProvincialAreaType.ProvincialAreaTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AFE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeedZone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WellboreID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UWI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WellsiteName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UTMZone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewSiteID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.County.CountyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FMAHolder.FMAHolderName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NaturalRegion.NaturalRegionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NaturalSubRegion.NaturalSubRegionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperatingArea.OperatingAreaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProvincialArea.ProvincialAreaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProvincialAreaType.ProvincialAreaTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AFE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeedZone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WellboreID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UWI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WellsiteName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UTMZone)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ReviewSiteID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReviewSiteID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReviewSiteID })
+        </td>
+    </tr>
+}
+
+</table>

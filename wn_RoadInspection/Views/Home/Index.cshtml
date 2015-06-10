@@ -1,0 +1,354 @@
+﻿@model IEnumerable<wn_web.Models.Kml>
+@{
+    ViewBag.Title = "Home Page";
+}
+@section mapjs
+{
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry"></script>
+    @*<script src="http://maps.googleapis.com/maps/api/js"></script>*@
+
+    <script src="~/Scripts/Maps/map_controls.js"></script>
+    <script src="~/Scripts/Maps/layer_controls.js"></script>
+    <script src="~/Scripts/Maps/label.js"></script>
+    <script src="~/Scripts/PDFGenerator/pdfdownloader.js"></script>
+    <script src="~/Scripts/Maps/toolbar.js"></script>
+    <script src="~/Scripts/jsPDF/jspdf.js"></script>
+    <script src="~/Scripts/jsPDF/jspdf.plugin.addimage.js"></script>
+    <script src="~/Scripts/jsPDF/jspdf.plugin.from_html.js"></script>
+    <script src="~/Scripts/jsPDF/jspdf.plugin.split_text_to_size.js"></script>
+    <script src="~/Scripts/jsPDF/jspdf.plugin.standard_fonts_metrics.js"></script>
+    <script src="~/Scripts/jsPDF/jspdf.plugin.cell.js"></script>
+    <script src="~/Scripts/jsPDF/jspdf.plugin.ie_below_9_shim.js"></script>
+    <script src="~/Scripts/jsPDF/jspdf.plugin.javascript.js"></script>
+    <script src="~/Scripts/jsPDF/jspdf.plugin.sillysvgrenderer.js"></script>
+    <script src="~/Scripts/jsPDF/jspdf.PLUGINTEMPLATE.js"></script>
+    <script src="~/Scripts/jsPDF/FileSaver.js"></script>
+    <script src="~/Scripts/PDFGenerator/Form.js"></script>
+    <script src="~/Scripts/Maps/raw_data.js"></script>
+    <script src="~/Scripts/Maps/Search.js"></script>
+    <script src="~/Scripts/Maps/angular.min.js"></script>
+    <script src="~/Scripts/Maps/controllers.js"></script>
+}
+
+@section mapcss{
+    <link href="~/Content/map.css" rel="stylesheet" />
+}
+
+
+<div class="row">
+
+
+    <div id="googleMap" class="col-md-8 col-sm-8"></div>
+    <div id="toolPanel" class="col-md-4 col-sm-4 col-xs-10">
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Controls</h1>
+                <!--<input id="temp" value="Click me" type="submit" onclick="Test()"/>-->
+
+
+                <div class="row">
+
+
+                    <div class="col-md-12">
+                        <!-- Search Section -->
+                        <!--
+                        <fieldset>
+                            <legend>Search</legend>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <button type="button" class="btn btn-info" onclick="toggleAdvSearch()">Advanced Search</button>
+
+                                </div>
+                                <div id="AdvSearchSection" class="col-xs-12 col-sm-12 col-md-12 cmargintop">
+                                    @{
+                                        if (ViewBag.AdvanceSearch != null)
+                                        {
+                                            int j = 0;
+                                            foreach (var adv in (ViewBag.AdvanceSearch as List<wn_web.Models.AdvancedSearchItem>))
+                                            {
+                                                string k = "advSearchKey" + j;
+                                                string n = "advSearchValue" + j;
+                                                <div class="row cmargintop">
+                                                    <div class="col-xs-4 col-sm-4 col-md-4" id="@k" name="@k">
+                                                        @adv.Name
+                                                    </div>
+
+                                                    <div class="col-xs-8 col-sm-8 col-md-8">
+                                                        @*@Html.DropDownList("SearchVa", (IEnumerable<SelectListItem>)adv.SelectList, "Select ...");*@
+                                                        @if (!adv.Name.Equals("Date"))
+                                                        {
+                                                            <select id="@n" name="@n" style="width:200px;">
+                                                                <option>Select ...</option>
+                                                                @if (adv.Options != null)
+                                                                {
+                                                                    foreach (var aitem in (adv.Options as List<string>))
+                                                                    {
+                                                                        <option value="@aitem">@aitem</option>
+                                                                    }
+                                                                }
+                                                            </select>
+                                                        }
+                                                        else
+                                                        {
+                                                            // Show two input fields for Date
+                                                            <label for="advFrom">From</label>
+                                                            <input class="datefield" id="advFrom" name="advFrom" type="date" />
+                                                            <label for="advTo">to</label>
+                                                            <input class="datefield" id="advTo" name="advTo" type="date" />
+                                                        }
+                                                    </div>
+                                                </div>
+                                                        j++;
+                                            }
+
+                                            <text>
+                                                <script type="text/javascript">
+                                                    numOfSearchTypes = @j;
+                                                </script>
+                                            </text>
+                                        }
+                                    }
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 cmargintop">
+                                            <button type="button" class="btn btn-danger cmargintop" onclick="AdvancedSearch()">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="SingleSearchSection">
+                                <div class="row cmargintop">
+                                    <div class="col-md-4">
+                                        Search Types:
+                                    </div>
+                                    <div class="col-md-8">
+                                        @if (ViewBag.SearchTypes != null)
+                                        {
+                                            @Html.DropDownList("SearchType", (IEnumerable<SelectListItem>)ViewBag.SearchTypes, "Select ...", new { @class = "cu_width" })
+                                        }
+                                    </div>
+                                </div>
+
+                                <div id="SearchValueDiv" class="row cmargintop">
+                                    <div class="col-md-4">Criteria: </div>
+                                    <div class="col-md-8">
+                                        <select class="cu_width" id="SearchValue" name="SearchValue"></select>
+                                    </div>
+                                </div>
+                                <div id="DatepickersDiv" class="row cmargintop">
+                                    <div class="col-md-12">
+                                        <label for="from">From</label>
+                                        <input class="datefield" id="from" name="from" type="date" />
+                                        <label for="to">to</label>
+                                        <input class="datefield" id="to" name="to" type="date" />
+                                    </div>
+                                </div>
+
+                                <div id="CrossingIDDiv" class="cmargintop">
+                                    <table class="col-md-12" style="text-align:center;">
+                                        <tbody>
+                                            <tr>
+                                                <th class="cu_tr">1</th>
+                                                <th class="cu_tr"></th>
+                                                <th class="cu_tr">2</th>
+                                                <th class="cu_tr"></th>
+                                                <th class="cu_tr">3</th>
+                                                <th class="cu_tr"></th>
+                                                <th class="cu_tr">4</th>
+                                                <th class="cu_tr"></th>
+                                                <th class="cu_tr">5</th>
+                                            </tr>
+                                            <tr>
+
+                                                @{
+
+                                                    var counter = 0;
+                                                    for (var i = 0; i < 9; i++)
+                                                    {
+
+                                                        int j = i + 1;
+                                                        if ((j % 2) == 1)
+                                                        {
+                                                            var id = "crossing_input_" + counter;
+                                                            counter++;
+                                                            <td><input id="@id" class="cu_tr" type="text" maxlength="2" /></td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td><span class="cu_tr">-</span></td>
+                                                        }
+                                                    }
+                                                }
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="row cmargintop">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <button type="button" class="btn btn-success" id="reset" onclick="reset()">Reset</button>
+                                        <input type="submit" value="Submit" id="SearchSubmit" onclick="sendQuery()" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                            -->
+
+
+
+
+
+
+
+                    </div>
+
+                    @*<div class="col-md-6">
+                            <fieldset>
+                                <legend>Markers</legend>
+                                <input type="checkbox" id="marker_highRisk" onclick="checkboxAction('high')" checked />High Risk<br />
+                                <input type="checkbox" id="marker_modRisk" onclick="checkboxAction('mod')" checked />Moderate Risk<br />
+                                <input type="checkbox" id="marker_lowRisk" onclick="checkboxAction('low')" checked />Low Risk<br />
+                                <input type="checkbox" id="marker_noRisk" onclick="checkboxAction('no')" checked />No Risk<br />
+                            </fieldset>
+                        </div>*@
+
+                    <text>
+                        <script type="text/javascript">
+
+                            var isSA = "@ViewBag.isSA";
+
+                        </script>
+                    </text>
+
+
+
+                    <div class="col-md-12">
+                        <fieldset ng-controller="SiteVisitController">
+                            <legend>Data</legend>
+                            <p ng-repeat="type in rawDataTypes">
+                                <label>
+                                    <input type="checkbox"
+                                           name="selectedTypes[]"
+                                           value="{{type.name}}"
+                                           ng-model="type.selected"
+                                           ng-click="getData(e, type)" />{{type.name}}<br />
+
+                                </label>
+                            </p>
+
+
+
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+
+                                    <input type="checkbox" id="layer_@item.ID" onclick="layerController('#layer_@item.ID')" />@item.Name<br />
+                                    <text>
+                                        <script type="text/javascript">
+
+                                            setLayers(@item.ID, "@item.Url");
+
+                                        </script>
+                                    </text>
+                                }
+                            }
+                        </fieldset>
+                    </div>
+
+                </div>
+
+                <!-- Download PDF Section -->
+                @*<div class="row">
+                        <div class="col-md-12">
+                            <fieldset>
+                                <legend>Downloads</legend>
+                                <h5>Download PDF For Selected Markers</h5>
+                                <div class="row">
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        @Html.RadioButton("pdf_download_option", "single", true) In a Single PDF
+                                        @Html.RadioButton("pdf_download_option", "multiple") In Multiple PDFs
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <button type="button" class="btn btn-primary" onclick="postPositions()">Download</button>
+                                    </div>
+                                </div>
+
+
+
+                            </fieldset>
+
+                        </div>
+
+                    </div>*@
+
+                <hr />
+
+                @if (ViewBag.isSA != null)
+                {
+                    <div class="col-md-12">
+                        <a href="/tutorial" class="btn btn-primary">Create a desktop review</a>
+                    </div>
+                }
+                
+                <hr />
+
+                <h1>Details</h1>
+                <div id="detailDiv" class="row">
+                    
+                    @using (Html.BeginForm("ShowOnNewTab", "Data", FormMethod.Post, new { target = "_blank" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary()
+                        <div id="downloadDiv" class="col-md-12">
+                        </div>
+
+
+                    }
+
+                    <div id="detailsDiv" class="col-md-12"></div>
+                  
+                </div>
+
+                <div class="row mCusRow">
+                    <div id="table_wrapper" class="col-md-7 col-sm-12 col-xs-12">
+                        <table id="coordList"></table>
+                    </div>
+
+                    <div id="img_wrapper" class="col-md-5 col-sm-12 col-xs-12">
+                        <ul id="imageList"></ul>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div id="toolBar">
+        <div id="firstBtn" class="toolBtns">
+            <a class="mA" onclick="toolbarControls()"><img src="~/Content/Images/controls.png" class="img-responsive" /></a>
+        </div>
+        <hr class="mhr2" />
+
+    </div>
+
+    <div id="processingIndicator">
+        <h2>Processing</h2>
+    </div>
+
+
+    <div id="selectedMarkersWindow" class="row">
+    </div>
+</div>
+
+

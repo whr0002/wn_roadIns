@@ -1,0 +1,261 @@
+﻿@model IEnumerable<wn_web.Models.Reclaimation.DesktopReview>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FacilityType.FacilityTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Landscape.LandscapeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LSDQuarter.AspectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelevantCriteria.RelevantCriteriaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiteID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soil.SoilName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vegetation.VegetationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovalStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkPhase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Occupant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OccupantInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoilClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoilGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ERCBLic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Width)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaAC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Northing)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Easting)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Elevation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LSD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SurveyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConstructionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpudDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AbandonmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReclamationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RCADate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RCNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DSAComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exemptions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmendDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmendDetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RevegDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RevegDetail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FacilityType.FacilityTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Landscape.LandscapeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LSDQuarter.AspectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelevantCriteria.RelevantCriteriaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiteID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soil.SoilName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vegetation.VegetationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovalStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkPhase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Occupant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OccupantInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoilClass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoilGroup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ERCBLic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Width)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaHA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaAC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Northing)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Easting)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Elevation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LSD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurveyDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConstructionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpudDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AbandonmentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReclamationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RCADate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RCNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DSAComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Exemptions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmendDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmendDetail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RevegDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RevegDetail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DesktopReviewID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DesktopReviewID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DesktopReviewID })
+        </td>
+    </tr>
+}
+
+</table>

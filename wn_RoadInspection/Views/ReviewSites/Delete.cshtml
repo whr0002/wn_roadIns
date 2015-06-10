@@ -1,0 +1,128 @@
+﻿@model wn_web.Models.Reclaimation.ReviewSite
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ReviewSite</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.County.CountyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.County.CountyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FMAHolder.FMAHolderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FMAHolder.FMAHolderName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NaturalRegion.NaturalRegionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NaturalRegion.NaturalRegionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NaturalSubRegion.NaturalSubRegionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NaturalSubRegion.NaturalSubRegionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperatingArea.OperatingAreaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatingArea.OperatingAreaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProvincialArea.ProvincialAreaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProvincialArea.ProvincialAreaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProvincialAreaType.ProvincialAreaTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProvincialAreaType.ProvincialAreaTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AFE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeedZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeedZone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WellboreID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WellboreID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UWI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UWI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WellsiteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WellsiteName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UTMZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UTMZone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

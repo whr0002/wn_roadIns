@@ -1,0 +1,32 @@
+﻿@media (max-width: 768px) {
+    #googleMap{
+        width: calc(16.66% - 50px);
+    }
+    #img_wrapper {
+        margin-left: 10px;
+    }
+    #toolPanel{   
+        right: 45px;
+    }
+}
+
+@media (max-width: 360px) {
+    #toolPanel{
+        right: 25px;
+    }
+}
+
+@media (min-width: 768px) {
+    #googleMap{
+        width: calc(66% - 50px);
+    }
+
+}
+
+.mCusRow{
+    margin-right: 5px !important;
+}
+
+.displayNone {
+    display: none;
+}

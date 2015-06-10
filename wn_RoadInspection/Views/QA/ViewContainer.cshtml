@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Uri>
+@{
+    ViewBag.Title = "ViewContainer";
+}
+
+<h2>ViewContainer</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <ul>
+            <li>@Html.ActionLink("Back", "Index", "QA")</li>
+            <li>@Html.ActionLink("Clear Container", "Clear", new { roleName = ViewBag.roleName })</li>
+        </ul>
+        
+
+    </div>
+    @foreach (var url in Model)
+    {
+        <div class="col-md-2">
+            <img src="@url.ToString()" class="cusImage2" />
+        </div>
+    }
+
+</div>
