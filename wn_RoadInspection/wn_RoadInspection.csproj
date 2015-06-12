@@ -334,6 +334,7 @@
     <Content Include="Scripts\Maps\label.js" />
     <Content Include="Scripts\Maps\layer_controls.js" />
     <Content Include="Scripts\Maps\map_controls.js" />
+    <Content Include="Scripts\Maps\Polyline_control.js" />
     <Content Include="Scripts\Maps\raw_data.js" />
     <Content Include="Scripts\Maps\Search.js" />
     <Content Include="Scripts\Maps\toolbar.js" />

@@ -1,6 +1,6 @@
 ﻿function generateKML() {
     mWindow = window.open("data:text/xml," + encodeURIComponent(buildRoadXML()),
-        "_blank", "width=500,height=500");
+        "_blank", "width=800,height=800");
 
     mWindow.focus();
 }
@@ -109,15 +109,41 @@ function buildRoadXML() {
 }
 
 function buildPlacemarks() {
-    var ps = "";
-    for (i = 0; i < selectedPaths.length; i++) {
-        ps += element('Placemark',
-            element('name', "ahah")+
-            element('description', "This is a desc")+
-            element('LineString',
-                element('coordinates', selectedPaths[i]))
-            ,{ ID: ""+i });
+    console.log("Selected Locations: " + selectedCPaths.length);
+    var placemarks = [];
+    for (var i = 0; i < selectedCPaths.length; i++) {
+
+        if(selectedCPaths[i].LocationList.length > 1){
+            placemarks.push(element('Placemark',
+                element('styleUrl', "#line-style-1")+
+                element('name', "ID: "+selectedCPaths[i].ID)+
+                element('description', "This path is created on " + selectedCPaths[i].Date) +
+                element('LineString',
+                    element('coordinates', selectedCPaths[i].Path))
+                , { ID: "" + selectedCPaths[i].ID }));
+        } else if (selectedCPaths[i].LocationList.length === 1) {
+            placemarks.push(element('Placemark',
+                element('styleUrl', "#line-style-1") +
+                element('name', "ID: " + selectedCPaths[i].ID) +
+                element('description', "This path is created on " + selectedCPaths[i].Date) +
+                element('Point',
+                    element('coordinates', selectedCPaths[i].Path))
+                , { ID: "" + selectedCPaths[i].ID }));
+        }
     }
 
-    return ps;
+    placemarks.push(element('Style', element('LineStyle',
+        element('color', "FF00ffff") + element('width', 5))
+        , { id: 'line-style-1' }));
+
+    return placemarks.join(' ');
+}
+
+function locationsToString(locationList) {
+    var result = "";
+    for (var i = 0; i < locationList.length; i++) {
+        result += locationList[i].Longitude + "," + locationList[i].Latitude + "," + 0 + " ";
+    }
+
+    return result;
 }

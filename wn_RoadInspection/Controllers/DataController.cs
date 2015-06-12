@@ -138,6 +138,7 @@ namespace wn_web.Controllers
 
             return Json(null, JsonRequestBehavior.AllowGet);
         }
+
         [HttpPost]
         public void PostPositions(string data)
         {
@@ -261,6 +262,7 @@ namespace wn_web.Controllers
                     .Select(s => new RoadInspectionViewModel
                     {
                         ID = s.RoadInspectionID,
+                        Date = s.INSP_DATE,
                         Path = s.Locations,
                         Client = s.Client
                     });
@@ -271,6 +273,7 @@ namespace wn_web.Controllers
                     .Select(s => new RoadInspectionViewModel
                     {
                         ID = s.RoadInspectionID,
+                        Date = s.INSP_DATE,
                         Path = s.Locations,
                         Client = s.Client
                     })

@@ -18,6 +18,7 @@ namespace wn_web.Models.Reclaimation
     public class RoadInspectionViewModel
     {
         public int ID { get; set; }
+        public DateTime Date { get; set; }
         public String Path { get; set; }
         public String Client { get; set; }
     }
