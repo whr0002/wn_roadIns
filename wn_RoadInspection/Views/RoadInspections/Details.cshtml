@@ -1,0 +1,242 @@
+﻿@model wn_RoadInspection.Models.RoadInspection.RoadInspection
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RoadInspection</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Group)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InspectorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InspectorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INSP_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSP_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Licence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Licence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoadName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoadName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DLO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DLO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KmFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KmFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KmTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KmTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoadStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoadStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusMatch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusMatch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RS_Condition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RS_Condition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RS_Notification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RS_Notification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RS_RoadSurface)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RS_RoadSurface)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RS_GravelCondition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RS_GravelCondition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RS_VegetationCover)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RS_VegetationCover)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RS_CoverType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RS_CoverType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DI_Ditches)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DI_Ditches)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DI_VegetationCover)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DI_VegetationCover)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DI_CoverType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DI_CoverType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OT_Signage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OT_Signage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OT_Crossings)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OT_Crossings)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OT_GroundAccess)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OT_GroundAccess)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OT_RoadMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OT_RoadMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OT_RoadRIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OT_RoadRIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OT_Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OT_Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Locations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Locations)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RoadInspectionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

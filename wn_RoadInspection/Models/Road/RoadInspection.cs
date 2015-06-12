@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace wn_RoadInspection.Models.RoadInspection
 {
-    public class RoadForm
+    public class RoadInspection
     {
-        public int RoadFormID { get; set; }
+        public int RoadInspectionID { get; set; }
         public String UserName{get; set;}
         public String Group{get; set;}
         public String Client{get; set;}
         public String InspectorName{get; set;}
-        public String INSP_DATE{get; set;}
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString="{0:yyyy-MM-dd HH:mm:ss}", ApplyFormatInEditMode=true)]
+        public DateTime INSP_DATE{get; set;}
+
         public String Licence{get; set;}
         public String RoadName{get; set;}
         public String DLO{get; set;}

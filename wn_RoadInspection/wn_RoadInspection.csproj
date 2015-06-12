@@ -202,6 +202,8 @@
     <Compile Include="Controllers\Reclaimation\Report\SiteVisitReportsController.cs" />
     <Compile Include="Controllers\Reclaimation\ReviewSitesController.cs" />
     <Compile Include="Controllers\Reclaimation\TutorialController.cs" />
+    <Compile Include="Controllers\Road\RoadDataController.cs" />
+    <Compile Include="Controllers\Road\RoadInspectionsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SearchTypesController.cs" />
     <Compile Include="Controllers\SuperAdminController.cs" />
@@ -209,6 +211,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506101604149_InitialCreate.cs" />
+    <Compile Include="Migrations\201506101604149_InitialCreate.Designer.cs">
+      <DependentUpon>201506101604149_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506101646162_1.cs" />
+    <Compile Include="Migrations\201506101646162_1.Designer.cs">
+      <DependentUpon>201506101646162_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506101720287_2.cs" />
+    <Compile Include="Migrations\201506101720287_2.Designer.cs">
+      <DependentUpon>201506101720287_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506101731498_3.cs" />
+    <Compile Include="Migrations\201506101731498_3.Designer.cs">
+      <DependentUpon>201506101731498_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdvancedSearchItem.cs" />
     <Compile Include="Models\AndroidViewModel.cs" />
@@ -259,7 +278,7 @@
     <Compile Include="Models\Reclaimation\Soil.cs" />
     <Compile Include="Models\Reclaimation\Vegetation.cs" />
     <Compile Include="Models\Record.cs" />
-    <Compile Include="Models\RoadForm\RoadInspection.cs" />
+    <Compile Include="Models\Road\RoadInspection.cs" />
     <Compile Include="Models\SearchObject.cs" />
     <Compile Include="Models\SearchType.cs" />
     <Compile Include="Models\SignInModel.cs" />
@@ -288,6 +307,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\roadinspection.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -310,6 +330,7 @@
     <Content Include="Scripts\Maps\angular.min.js" />
     <Content Include="Scripts\Maps\bootstrap-datepicker.js" />
     <Content Include="Scripts\Maps\controllers.js" />
+    <Content Include="Scripts\Maps\KMLGenerator.js" />
     <Content Include="Scripts\Maps\label.js" />
     <Content Include="Scripts\Maps\layer_controls.js" />
     <Content Include="Scripts\Maps\map_controls.js" />
@@ -402,17 +423,22 @@
     <Content Include="Views\SiteVisitReports\Edit.cshtml" />
     <Content Include="Views\SiteVisitReports\Index.cshtml" />
     <Content Include="Views\Tutorial\Index.cshtml" />
+    <Content Include="Views\RoadInspections\Create.cshtml" />
+    <Content Include="Views\RoadInspections\Delete.cshtml" />
+    <Content Include="Views\RoadInspections\Details.cshtml" />
+    <Content Include="Views\RoadInspections\Edit.cshtml" />
+    <Content Include="Views\RoadInspections\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\KML\" />
-    <Folder Include="Controllers\RoadForm\" />
     <Folder Include="Views\AndroidData\" />
     <Folder Include="Views\Android\" />
     <Folder Include="Views\Data\" />
     <Folder Include="Views\FieldData\" />
     <Folder Include="Views\Kmls\" />
     <Folder Include="Views\RData\" />
+    <Folder Include="Views\RoadData\" />
     <Folder Include="Views\SearchTypes\" />
     <Folder Include="Views\SuperAdmin\" />
     <Folder Include="Views\Test\" />
@@ -423,6 +449,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201506101604149_InitialCreate.resx">
+      <DependentUpon>201506101604149_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506101646162_1.resx">
+      <DependentUpon>201506101646162_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506101720287_2.resx">
+      <DependentUpon>201506101720287_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506101731498_3.resx">
+      <DependentUpon>201506101731498_3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

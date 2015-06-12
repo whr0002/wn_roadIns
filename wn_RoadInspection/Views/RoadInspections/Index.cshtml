@@ -1,0 +1,195 @@
+﻿@model IEnumerable<wn_RoadInspection.Models.RoadInspection.RoadInspection>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Group)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InspectorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INSP_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Licence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoadName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DLO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KmFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KmTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoadStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusMatch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RS_Condition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RS_Notification)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RS_RoadSurface)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RS_GravelCondition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RS_VegetationCover)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RS_CoverType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DI_Ditches)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DI_VegetationCover)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DI_CoverType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OT_Signage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OT_Crossings)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OT_GroundAccess)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OT_RoadMR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OT_RoadRIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OT_Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Locations)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InspectorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INSP_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Licence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoadName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DLO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KmFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KmTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoadStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusMatch)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RS_Condition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RS_Notification)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RS_RoadSurface)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RS_GravelCondition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RS_VegetationCover)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RS_CoverType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DI_Ditches)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DI_VegetationCover)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DI_CoverType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OT_Signage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OT_Crossings)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OT_GroundAccess)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OT_RoadMR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OT_RoadRIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OT_Comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Locations)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoadInspectionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RoadInspectionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoadInspectionID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -7,11 +7,11 @@ function getCoords() {
 }
 
 
-
 // Adding markers on map
 var markers = [];
 var selectedMarkers = [];
 var selectedRealMarkers = [];
+var selectedPaths = [];
 var map;
 var CMarker = function (id, lat, lng) {
     this.ID = id;
@@ -21,13 +21,20 @@ var CMarker = function (id, lat, lng) {
 }
 var CMarkers = [];
 var shouldAutoCenter = true;
+var Location = function (latitude, longitude) {
+    this.Latitude = latitude;
+    this.Longitude = longitude;
+    this.LatLng = new google.maps.LatLng(latitude, longitude);
+}
 function showMarkersOnMap(response) {
+
     $('#processingIndicator').hide();
     if (response != null) {
         // Listen to 'Escape' key press
         setKeypressListener();
         // Clear data
-        clearMarkers();       
+        clearMarkers();
+        clearPaths();
         selectedMarkers = [];
         selectedRealMarkers = [];
 
@@ -83,60 +90,58 @@ function showMarkersOnMap(response) {
 
 
         for (var i = 0; i < response.length; i++) {
+
             // Loop through data and set them up on map
-            //$('#coordList').append("<li>" + response[i].Latitude + " " + response[i].Longitude + "</li>");
+            selectedPaths.push(response[i].Path);
+            var locations = parsePath(response[i].Path);
 
-            // Set up marker options according to the latitude and longitude
-            var markerOptions = {
-                position: new google.maps.LatLng(response[i].Latitude, response[i].Longitude),
-                icon: '/Content/Images/marker_green.png'
-            };
+            if (locations.length > 0) {
+                // Draw things on map if locations exist
+                drawPath(getGoogleCoords(locations), map);
+                // Set up marker options according to the latitude and longitude
+                var markerOptions = {
+                    position: new google.maps.LatLng(locations[0].Latitude, locations[0].Longitude),
+                    icon: '/Content/Images/marker_green.png'
+                };
+                // Create a marker for starting point
+                var marker = new google.maps.Marker(markerOptions);
+                var cMarker = new CMarker(response[i].ID, locations[0].Latitude, locations[0].Longitude);
 
-            // Give a color to markers according to their risk level
-            //if (response[i].Risk.toLowerCase() == "no") {
-            //    markerOptions.icon = '/Content/Images/marker_grey.png';
-            //    markerOptions.title = "no";
-            //} else if (response[i].Risk.toLowerCase() == "low") {
-            //    markerOptions.icon = '/Content/Images/marker_green.png';
-            //    markerOptions.title = "low";
-            //} else if (response[i].Risk.toLowerCase() == "mod") {
-            //    markerOptions.icon = '/Content/Images/marker_orange.png';
-            //    markerOptions.title = "mod";
-            //} else if (response[i].Risk.toLowerCase() == "high") {
-            //    markerOptions.title = "high";
-            //} else {
-            //    markerOptions.icon = '/Content/Images/marker_blue.png';
-            //    markerOptions.title = "Unknown";
-            //}
-            // Create a marker
-            var marker = new google.maps.Marker(markerOptions);
-            var cMarker = new CMarker(response[i].ID, response[i].Latitude, response[i].Longitude);
 
-            // Add marker to array
-            markers.push(marker);
-            CMarkers.push(cMarker);
+                // create a marker for ending point
+                var totalLocations = locations.length;
+                if (totalLocations > 1) {
+                
+                    var markerOptionsEnd = {
+                        position: new google.maps.LatLng(locations[totalLocations - 1].Latitude, locations[totalLocations - 1].Longitude)
+                    };
 
-            //var mapLabel = new MapLabel({
-            //    text: i,
-            //    position: markerOptions.position,
-            //    map: map,
-            //    fontSize: 16,
-            //    align: 'center'
-            //});
+                    var markerEnd = new google.maps.Marker(markerOptionsEnd);
+                    var cMarkerEnd = new CMarker(response[i].ID, locations[totalLocations - 1].Latitude, locations[totalLocations - 1].Longitude)
 
-            ////mapLabel.set('position', markerOptions.position);
-            //marker.bindTo('map', mapLabel);
-            //marker.bindTo('position', mapLabel);
-            //mapLabel.setMap(null);
+                    // Add marker to array
+                    markers.push(markerEnd);
+                    CMarkers.push(cMarkerEnd);
 
-            // Set marker on map
-            marker.setMap(map);
+                    markerEnd.setMap(map);
+                }
 
-            // Set up pop up windows
-            var info = response[i].Risk;
-            var infoWindowOptions = { content: 'Empty' };
-            var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-            bindInfoWindow(marker, map, infoWindow, response[i]);
+
+                // Add marker to array
+                markers.push(marker);
+                CMarkers.push(cMarker);
+
+
+                // Set marker on map
+                marker.setMap(map);
+
+                // Set up pop up windows
+                var info = response[i].Risk;
+                var infoWindowOptions = { content: 'Empty' };
+                var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+                bindInfoWindow(marker, map, infoWindow, response[i]);
+
+            }
 
 
         }
@@ -158,6 +163,51 @@ function clearMarkers() {
         }
     }
     markers = [];
+}
+function clearPaths() {
+    if (paths != null) {
+        for (i = 0; i < paths.length; i++) {
+            paths[i].setMap(null);
+        }
+
+        paths = [];
+    }
+}
+function parsePath(path) {
+    var locations = [];
+    var temp = path.trim().split(" ");
+    for (i = 0; i < temp.length; i++) {
+
+        var temp2 = temp[i].split(",");
+        var location = new Location(temp2[0], temp2[1]);
+        locations.push(location);
+    }
+
+    return locations;
+}
+function getGoogleCoords(locations) {
+    var coords = [];
+    for (i = 0; i < locations.length; i++) {
+        coords.push(locations[i].LatLng);
+        
+    }
+
+    return coords;
+}
+var paths = [];
+function drawPath(coords, map) {
+    if(coords.length > 1){
+        var path = new google.maps.Polyline({
+            path: coords,
+            geodesic: true,
+            strokeColor: '#FFFF00',
+            strokeOpacity: 1.0,
+            strokeWeight: 5
+        });
+
+        paths.push(path);
+        path.setMap(map);
+    }
 }
 
 var lastDrawing;
@@ -362,16 +412,19 @@ function markerSelectionChanged() {
             $("#imageList").empty();
             $("#downloadDiv").empty();
             $("#detailsDiv").empty();
-            $("#downloadDiv").append('<a href="/desktopreviews/edit/' + response["Part1"]["DesktopReviewID"] + '" class="btn btn-primary">Edit</a>');
+            $("#downloadDiv").append('<a href="/RoadInspections/edit/' + response["RoadInspection"]["RoadInspectionID"] + '" class="btn btn-primary">Edit</a>');
 
 
             // Got data, Display it
-            var images = new Object();
+            
             var i = 1;
-            extractJSON(i, response);
+            extractJSON(i, response["RoadInspection"]);
 
 
+            
             // Display images
+            console.log(response["Photos"]);
+            var images = response["Photos"];
             displayImages(images);
 
         } else {
@@ -415,13 +468,16 @@ function markerSelectionChanged() {
     }
 
     function displayImages(theImages) {
-        for (var key in theImages) {
-            if(theImages.hasOwnProperty(key)){
-                if(theImages[key].length > 0){
-                    $("#imageList").append('<span>'+ key +'</span><img src="/Content/Photos/' + theImages[key] + '" class="img-responsive"><br />');
+        for (i = 0; i < theImages.length; i++) {
+            var image = theImages[i];
+            for (var key in image) {
+                if (image.hasOwnProperty(key)) {
+                    if (key.indexOf("Path") > -1 && image.Path != null && image.Path.length > 0) {
+                        $("#imageList").append('<span>' + image.Description + '</span><img src="' + image.Path + '" class="img-responsive"><br />');
+                    }
                 }
-            }
 
+            }
         }
     }
 

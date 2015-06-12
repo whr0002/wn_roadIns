@@ -28,6 +28,7 @@
     <script src="~/Scripts/Maps/Search.js"></script>
     <script src="~/Scripts/Maps/angular.min.js"></script>
     <script src="~/Scripts/Maps/controllers.js"></script>
+    <script src="~/Scripts/Maps/KMLGenerator.js"></script>
 }
 
 @section mapcss{
@@ -288,12 +289,7 @@
 
                 <hr />
 
-                @if (ViewBag.isSA != null)
-                {
-                    <div class="col-md-12">
-                        <a href="/tutorial" class="btn btn-primary">Create a desktop review</a>
-                    </div>
-                }
+               <button class="btn btn-primary" onclick="generateKML()">Try</button>
                 
                 <hr />
 

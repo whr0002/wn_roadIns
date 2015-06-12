@@ -19,6 +19,8 @@ using System.Diagnostics;
 using System.Web.Script.Serialization;
 using System.Globalization;
 using wn_web.Models.Reclaimation;
+using wn_RoadInspection.Models.RoadInspection;
+using wn_web.Models.Reclaimation.Report;
 
 namespace wn_web.Controllers
 {
@@ -101,32 +103,40 @@ namespace wn_web.Controllers
         }
         public JsonResult OneRowD(int id)
         {
-            OneRowViewModel o = new OneRowViewModel();
-            DesktopReview v = null;
-            ReviewSite r = null;
+            OneRowRoadInspectionViewModel o = new OneRowRoadInspectionViewModel();
+            RoadInspection r = null;
+            List<Photo> p = null;
             string role = getUserRole();
             if (role != null)
             {
                 if (role.ToUpper().Equals("SUPER ADMIN"))
                 {
-                    v = db.DesktopReviews.Where(w => w.DesktopReviewID == id).FirstOrDefault();
-                    if (v != null)
+                    r = db.RoadInspections.Where(w => w.RoadInspectionID == id).FirstOrDefault();
+                    if (r != null)
                     {
-                        r = db.ReviewSites.Where(w => w.ReviewSiteID.Equals(v.SiteID)).FirstOrDefault();
+                        p = db.Photos.Where(w => w.FormID == r.RoadInspectionID && w.FormTypeName.Equals("ROAD")).ToList();
 
-                        o.Part1 = v;
-                        o.Part2 = r;
+                        o.RoadInspection = r;
+                        o.Photos = p;
                         return Json(o, JsonRequestBehavior.AllowGet);
                     }
                 }
                 else
                 {
-                    v = db.DesktopReviews.Where(w => w.DesktopReviewID == id && w.Client.Equals(role)).FirstOrDefault();
+                    r = db.RoadInspections.Where(w => w.RoadInspectionID == id && w.Client.Equals(role)).FirstOrDefault();
+                    if (r != null)
+                    {
+                        p = db.Photos.Where(w => w.FormID == r.RoadInspectionID && w.FormTypeName.Equals("ROAD")).ToList();
+
+                        o.RoadInspection = r;
+                        o.Photos = p;
+                        return Json(o, JsonRequestBehavior.AllowGet);
+                    }
                 }
             }
 
 
-            return Json(v, JsonRequestBehavior.AllowGet);
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public void PostPositions(string data)
@@ -239,7 +249,7 @@ namespace wn_web.Controllers
 
         public JsonResult CoordinatesD()
         {
-            IQueryable<CoordsViewModel> data = null;
+            IQueryable<RoadInspectionViewModel> data = null;
             string role = getUserRole();
 
             if (role != null)
@@ -247,29 +257,25 @@ namespace wn_web.Controllers
 
                 if (role.ToUpper().Equals("SUPER ADMIN"))
                 {
-                    data = db.DesktopReviews
-                    .Select(s => new CoordsViewModel
+                    data = db.RoadInspections
+                    .Select(s => new RoadInspectionViewModel
                     {
-                        ID = s.DesktopReviewID,
-                        Latitude = s.Latitude,
-                        Longitude = s.Longitude,
+                        ID = s.RoadInspectionID,
+                        Path = s.Locations,
                         Client = s.Client
-                    })
-                    .Where(w => w.Latitude != null);
+                    });
                 }
                 else
                 {
-                    data = db.DesktopReviews
-                    .Select(s => new CoordsViewModel
+                    data = db.RoadInspections
+                    .Select(s => new RoadInspectionViewModel
                     {
-                        ID = s.DesktopReviewID,
-                        Latitude = s.Latitude,
-                        Longitude = s.Longitude,
+                        ID = s.RoadInspectionID,
+                        Path = s.Locations,
                         Client = s.Client
                     })
                     .Where(w =>
-                        (w.Client != null && w.Client.Equals(role))
-                        && w.Latitude != null);
+                        (w.Client != null && w.Client.Equals(role)));
                 }
 
 

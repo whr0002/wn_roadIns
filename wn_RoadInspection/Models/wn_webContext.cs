@@ -46,7 +46,7 @@ namespace wn_web.Models
         public DbSet<SiteVisitReport> SiteVisitReports { get; set; }
         public DbSet<FormType> FormTypes { get; set; }
         public DbSet<Photo> Photos { get; set; }
-        public DbSet<RoadForm> RoadInspections { get; set; }
+        public DbSet<RoadInspection> RoadInspections { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
