@@ -1,0 +1,287 @@
+﻿@using wn_web.Models.Reclaimation
+@model IEnumerable<OneRowRoadInspectionViewModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/print.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowOnNewTab</title>
+</head>
+<body>
+    @foreach (var item in Model) { 
+        <page size="Letter">
+        <div class="row">
+            <div class="pageMarginTop"></div>
+            <div class="col-xs-12">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-2"><img src="~/Content/Logos/MW_logo.jpg" class="cLogo" /></div>
+                
+                <div class="col-xs-7 text-center">
+                    <div class="col-xs-12 textBold">Millar Western Forest Products</div>
+                    <div class="col-xs-12">Whitecourt - Woodlands</div>
+                    <div class="col-xs-12 textBold biggerFont">Road Inspection Form</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-12">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-10 marginTop">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.InspectorName)</span>
+                            <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.InspectorName)</span>
+
+                        </div>
+                        <div class="col-xs-6">
+                            <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.INSP_DATE)</span>
+                            <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.INSP_DATE)</span>
+                        </div>
+                    </div>
+
+                    <!-- Road Information Section -->
+                    <div class="row marginTop borderA">
+
+                        <div class="col-xs-12 text-center textBold">Road Information / Location</div>
+
+                        <div class="row marginTop">
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.Licence)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.Licence)</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.RoadName)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.RoadName)</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.DLO)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.DLO)</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    
+                                    <div class="col-xs-5">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.KmFrom)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.KmFrom)</span>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.KmTo)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.KmTo)</span>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.RoadStatus)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.RoadStatus)</span>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.StatusMatch)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.StatusMatch)</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Road Surface Section -->
+                    <div class="row marginTop borderA">
+
+                        <div class="col-xs-12 text-center textBold">Road Surface</div>
+
+                        <div class="row marginTop">
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.RS_Condition)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.RS_Condition)</span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.RS_Notification)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.RS_Notification)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.RS_RoadSurface)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.RS_RoadSurface)</span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.RS_GravelCondition)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.RS_GravelCondition)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.RS_VegetationCover)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.RS_VegetationCover)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="titleColor col-xs-6">@Html.DisplayNameFor(f => f.RoadInspection.RS_CoverType)</span>
+                                        <span class="valueColor col-xs-6">@Html.DisplayFor(f => item.RoadInspection.RS_CoverType)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ditches Section-->
+                    <div class="row marginTop borderA">
+                        <div class="row text-center textBold">Ditches</div>
+                        <div class="row marginTop">
+                            <div class="col-xs-6">
+                                <div class="col-xs-6 titleColor">@Html.DisplayNameFor(f => f.RoadInspection.DI_Ditches)</div>
+                                <div class="col-xs-6 valueColor">@Html.DisplayFor(f => item.RoadInspection.DI_Ditches)</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="col-xs-6 titleColor">@Html.DisplayNameFor(f => f.RoadInspection.DI_VegetationCover)</div>
+                                <div class="col-xs-6 valueColor">@Html.DisplayFor(f => item.RoadInspection.DI_VegetationCover)</div>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <div class="col-xs-6 titleColor">@Html.DisplayNameFor(f => f.RoadInspection.DI_CoverType)</div>
+                                <div class="col-xs-6 valueColor">@Html.DisplayFor(f => item.RoadInspection.DI_CoverType)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Signage Section-->
+                    <div class="row marginTop borderA">
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="col-xs-6 titleColor">@Html.DisplayNameFor(f => f.RoadInspection.OT_Signage)</div>
+                                <div class="col-xs-6 valueColor">@Html.DisplayFor(f => item.RoadInspection.OT_Signage)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Crossings Section-->
+                    <div class="row marginTop borderA">
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="col-xs-6 titleColor">@Html.DisplayNameFor(f => f.RoadInspection.OT_Crossings)</div>
+                                <div class="col-xs-6 valueColor">@Html.DisplayFor(f => item.RoadInspection.OT_Crossings)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ground Access Section-->
+                    <div class="row marginTop borderA">
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="col-xs-6 titleColor">@Html.DisplayNameFor(f => f.RoadInspection.OT_GroundAccess)</div>
+                                <div class="col-xs-6 valueColor">@Html.DisplayFor(f => item.RoadInspection.OT_GroundAccess)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Road Section-->
+                    <div class="row marginTop borderA">
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="col-xs-6 titleColor">@Html.DisplayNameFor(f => f.RoadInspection.OT_RoadMR)</div>
+                                <div class="col-xs-6 valueColor">@Html.DisplayFor(f => item.RoadInspection.OT_RoadMR)</div>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <div class="col-xs-6 titleColor">@Html.DisplayNameFor(f => f.RoadInspection.OT_RoadRIA)</div>
+                                <div class="col-xs-6 valueColor">@Html.DisplayFor(f => item.RoadInspection.OT_RoadRIA)</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Comments -->
+                    <div class="row marginTop borderA">
+                        <div class="col-xs-12 titleColor">@Html.DisplayNameFor(f => f.RoadInspection.OT_Comments)</div>
+                        <div class="col-xs-12 valueColor">@Html.DisplayFor(f => item.RoadInspection.OT_Comments)</div>
+                    </div>
+
+                    <!-- Photos -->
+                    <div class="row marginTop borderA">
+                        <div class="col-xs-12 titleColor">Photos</div>
+                        @if (item.Photos != null) {
+                            foreach (var p in item.Photos)
+                            {
+                                <div class="col-xs-3">
+                                    <img src="@p.Path" class="img-responsive galleryMaxHeight" />
+                                    @p.Description
+                                </div>   
+                            }
+                        }
+                    </div>
+
+                    <!-- Signature -->
+                    <div class="row marginTop">
+                        <div class="col-xs-12 titleColor">Signature:_______________________</div>
+                    </div>
+                </div>
+                <div class="col-xs-1"></div>
+            </div>
+
+
+        </div>
+
+    </page>
+    }
+
+</body>
+</html>

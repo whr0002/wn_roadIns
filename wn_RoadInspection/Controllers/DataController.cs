@@ -369,12 +369,82 @@ namespace wn_web.Controllers
 
 
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ViewResult ShowOnNewTab(int tabid)
+
+        public ViewResult ShowOnNewTab(int id)
+        {
+            OneRowRoadInspectionViewModel model = new OneRowRoadInspectionViewModel();
+            RoadInspection road = null;
+            var role = getUserRole();
+            if (role != null) {
+                if (role.Equals("super admin"))
+                {
+                    road = db.RoadInspections.Find(id);
+                }
+                else
+                {
+                    road = db.RoadInspections.Where(w => w.Group.Equals(role) && w.RoadInspectionID == id).FirstOrDefault();
+                }
+                
+            }
+
+            if (road != null)
+            {
+                List<Photo> photos = db.Photos.Where(w => w.FormID == road.RoadInspectionID && w.FormTypeName.Equals("ROAD")).ToList();
+                model.RoadInspection = road;
+                model.Photos = photos;
+            }
+            return View(model);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ViewResult ShowOnNewTab(string ids)
         {
 
-            return View();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            List<OneRowRoadInspectionViewModel> models = new List<OneRowRoadInspectionViewModel>();
+            var role = getUserRole();
+
+            if (ids != null)
+            {
+
+                string[] splited = ids.Trim().Split(',');
+
+                for (int i = 0; i < splited.Length; i++)
+                {
+                    try
+                    {
+                        int mId = Convert.ToInt32(splited[i]);
+
+                        OneRowRoadInspectionViewModel model = new OneRowRoadInspectionViewModel();
+                        RoadInspection road = null;
+
+                        if (role != null)
+                        {
+                            if (role.Equals("super admin"))
+                            {
+                                road = db.RoadInspections.Find(mId);
+                            }
+                            else
+                            {
+                                road = db.RoadInspections.Where(w => w.Group.Equals(role) && w.RoadInspectionID == mId).FirstOrDefault();
+                            }
+
+                        }
+
+                        if (road != null)
+                        {
+                            List<Photo> photos = db.Photos.Where(w => w.FormID == road.RoadInspectionID && w.FormTypeName.Equals("ROAD")).ToList();
+                            model.RoadInspection = road;
+                            model.Photos = photos;
+                            models.Add(model);
+                        }
+                    }
+                    catch (Exception e) { }
+                }
+            }
+            return View(models);
 
         }
 

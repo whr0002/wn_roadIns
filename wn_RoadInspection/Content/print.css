@@ -25,4 +25,67 @@ page[size="Letter"] {
     margin: 0;
     box-shadow: 0;
   }
+
+  .pageMarginTop{
+      margin-top: 50px !important;
+  }
+
+}
+
+.marginTop{
+    margin-top: 10px;
+}
+
+.borderA{
+    border: 1px solid black;
+}
+
+.titleColor{
+    color: rgb(0, 0, 0);
+    font-weight:bold;
+}
+
+.valueColor{
+    color: blue;
+}
+
+.textBold{
+    font-weight: bold;
+}
+
+.fixedHeight{
+    height: 150px;
+}
+
+.borderBottom{
+    border-bottom: 1px solid black;
+}
+
+.underLine{
+    text-decoration: underline;
+}
+
+.customImg{
+    max-height: 125px;
+}
+
+.galleryMaxHeight{
+    max-height: 125px;
+}
+
+.cLogo{
+    width: 70px;
+
+}
+
+.pageMarginTop{
+    margin-top: 50px;
+}
+
+.comment{
+    height: 100px;
+}
+
+.biggerFont{
+    font-size: 20px;
 }

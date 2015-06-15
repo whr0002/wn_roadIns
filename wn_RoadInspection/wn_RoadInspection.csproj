@@ -297,6 +297,7 @@
     <Content Include="Content\Images\marker_orange.png" />
     <Content Include="Content\Images\marker_purple.png" />
     <Content Include="Content\Images\Woodlands_icon.jpg" />
+    <Content Include="Content\Logos\MW_logo.jpg" />
     <Content Include="Content\Logos\scari.png" />
     <Content Include="Content\map.css" />
     <Content Include="Content\PagedList.css" />
@@ -429,13 +430,13 @@
     <Content Include="Views\RoadInspections\Details.cshtml" />
     <Content Include="Views\RoadInspections\Edit.cshtml" />
     <Content Include="Views\RoadInspections\Index.cshtml" />
+    <Content Include="Views\Data\ShowOnNewTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\KML\" />
     <Folder Include="Views\AndroidData\" />
     <Folder Include="Views\Android\" />
-    <Folder Include="Views\Data\" />
     <Folder Include="Views\FieldData\" />
     <Folder Include="Views\Kmls\" />
     <Folder Include="Views\RData\" />

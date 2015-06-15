@@ -418,15 +418,19 @@ function getOneLocation(id) {
 var currentDetailData;
 function displayInWindow(response) {
     if (response != null) {
-
+        console.log(response);
         // Set current detailed data
         currentDetailData = response;
+        var theID = response["RoadInspection"]["RoadInspectionID"];
         // Empty list first
         $("#coordList").empty();
         $("#imageList").empty();
         $("#downloadDiv").empty();
         $("#detailsDiv").empty();
-        $("#downloadDiv").append('<a href="/RoadInspections/edit/' + response["RoadInspection"]["RoadInspectionID"] + '" class="btn btn-primary">Edit</a>');
+        $("#showonnewtab").empty();
+        $("#showonnewtab").append('<input type="hidden" name="ids" value="' + getPathPositions() + '"/><input type="submit" value="Show on new tab" class="btn btn-primary">');
+        $("#downloadDiv").append(
+'<a href="/RoadInspections/edit/' + response["RoadInspection"]["RoadInspectionID"] + '" class="btn btn-primary">Edit</a>');
 
 
         // Got data, Display it

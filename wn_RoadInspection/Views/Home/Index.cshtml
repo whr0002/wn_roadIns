@@ -265,28 +265,25 @@
 
                 <!-- Download PDF Section -->
                 @*<div class="row">
-                        <div class="col-md-12">
-                            <fieldset>
-                                <legend>Downloads</legend>
-                                <h5>Download PDF For Selected Markers</h5>
-                                <div class="row">
+                    <div class="col-md-12">
+                        <fieldset>
+                            <legend>Downloads</legend>
+                            <h5>Download PDF For Selected Paths</h5>
+                            <div class="row">
 
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        @Html.RadioButton("pdf_download_option", "single", true) In a Single PDF
-                                        @Html.RadioButton("pdf_download_option", "multiple") In Multiple PDFs
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <button type="button" class="btn btn-primary" onclick="postPositions()">Download</button>
-                                    </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    @Html.RadioButton("pdf_download_option", "single", true) In a Single PDF
+                                    @Html.RadioButton("pdf_download_option", "multiple") In Multiple PDFs
                                 </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <a id="pdfBatch" href="" class="btn btn-primary" onclick="postPathPositions()">Road Inspection Forms</a>
+                                    <button type="button" class="btn btn-primary" onclick="postPositions()">Download</button>
+                                </div>
+                            </div>
 
-
-
-                            </fieldset>
-
-                        </div>
-
-                    </div>*@
+                        </fieldset>
+                    </div>
+                </div>*@
 
                 <hr />
 
@@ -301,6 +298,7 @@
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary()
+                        <div id="showonnewtab" class="col-md-12"></div>
                         <div id="downloadDiv" class="col-md-12">
                         </div>
 

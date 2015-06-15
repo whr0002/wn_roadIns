@@ -83,6 +83,7 @@ function selectedPolylineChanged(drawingManager, event) {
 
 
 function addToSelectedPolylines(bounds, overlay) {
+
     for (var i = 0; i < allCPaths.length; i++) {
 
         var coords = allCPaths[i].LocationList;
@@ -112,6 +113,16 @@ function addToSelectedPolylines(bounds, overlay) {
             }
         }
     }
+
+    generateIds();
+
+
+}
+
+function generateIds() {
+    $("#showonnewtab").empty();
+    $("#showonnewtab").append(
+'<input type="hidden" name="ids" value="' + getPathPositions() + '"/><input type="submit" value="Show on new tab" class="btn btn-primary">');
 }
 
 function bindPolylineInfoWindow(cpath, map, infowindow, json) {
@@ -190,3 +201,38 @@ function setPathColorBack() {
         allCPaths[i].PolyLine.setOptions({ strokeColor: allCPaths[i].Color });
     }
 }
+
+function getPathPositions() {
+
+
+        var json = "";
+        for (i = 0; i < selectedCPaths.length; i++) {
+            //var lats, longs;
+
+            //lats = selectedMarkers[i].Latitude;
+            //longs = selectedMarkers[i].Longitude;
+            if (i == 0) {
+                json += selectedCPaths[i].ID;
+                //json += '{"Latitude":"' + lats + '" , "Longitude": "' + longs + '"}';
+            } else {
+                json += ',' + selectedCPaths[i].ID;
+                //json += ',{"Latitude":"' + lats + '" , "Longitude": "' + longs + '"}';
+            }
+
+        }
+
+        console.log(json);
+        
+        return json;
+        //$.ajax({
+        //    type: 'POST',
+        //    url: '/Data/PostPositions',
+        //    traditional: true,
+        //    success: onGetDataSuccess,
+        //    data: { data: json },
+        //});
+
+        //$("#pdfBatch").attr("href", "/Data/showonnewtab/" + json);
+    
+}
+
